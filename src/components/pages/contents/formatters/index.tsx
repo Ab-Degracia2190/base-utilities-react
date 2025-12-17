@@ -101,7 +101,6 @@ const Formatters = () => {
                 value={textInput}
                 onChange={setTextInput}
                 placeholder="Enter text to format..."
-                isDarkMode={isDarkMode}
               />
 
               <div className={`rounded-lg p-4 space-y-3 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -147,7 +146,6 @@ const Formatters = () => {
                 value={nameInput}
                 onChange={setNameInput}
                 placeholder="Enter full name..."
-                isDarkMode={isDarkMode}
               />
 
               <div className={`rounded-lg p-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -175,7 +173,6 @@ const Formatters = () => {
                 value={numberInput}
                 onChange={setNumberInput}
                 placeholder="Enter numbers only..."
-                isDarkMode={isDarkMode}
               />
 
               <div className={`rounded-lg p-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -194,7 +191,6 @@ const Formatters = () => {
                 value={amountInput}
                 onChange={setAmountInput}
                 placeholder="Enter amount (e.g., 1234.56)..."
-                isDarkMode={isDarkMode}
               />
 
               <div className={`rounded-lg p-4 space-y-3 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -232,7 +228,6 @@ const Formatters = () => {
                   value={dateInput}
                   onChange={setDateInput}
                   placeholder="Choose a date..."
-                  isDarkMode={isDarkMode}
                 />
 
                 <div className={`border rounded-lg p-4 ${isDarkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-200'}`}>
@@ -282,7 +277,6 @@ const Formatters = () => {
                 value={dateRangeInput}
                 onChange={setDateRangeInput}
                 placeholder="Choose a date range..."
-                isDarkMode={isDarkMode}
               />
             </div>
 

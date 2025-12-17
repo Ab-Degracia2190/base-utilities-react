@@ -17,7 +17,6 @@ interface DropdownProps {
   required?: boolean;
   error?: string;
   onSelect?: (value: string) => void;
-  isDarkMode?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -30,8 +29,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   options = [],
   required = false,
   error,
-  onSelect,
-  isDarkMode = false
+  onSelect
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -98,25 +96,16 @@ const Dropdown: React.FC<DropdownProps> = ({
       e.preventDefault();
       setActiveIndex(prev => Math.max(prev - 1, -1));
     } else if (e.key === 'Escape') {
+      e.preventDefault();
       setShowOptions(false);
       setActiveIndex(-1);
     }
   };
 
-  const bgColor = isDarkMode ? 'bg-gray-700' : 'bg-white';
-  const textColor = isDarkMode ? 'text-white' : 'text-gray-900';
-  const labelColor = isDarkMode ? 'text-gray-300' : 'text-black';
-  const borderColor = isDarkMode ? 'border-gray-600' : 'border-gray-300';
-  const focusBorderColor = isDarkMode ? 'focus:border-blue-500' : 'focus:border-blue-600';
-  const dropdownBg = isDarkMode ? 'bg-gray-700' : 'bg-white';
-  const dropdownHover = isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100';
-  const activeDropdown = isDarkMode ? 'bg-gray-600' : 'bg-gray-100';
-  const iconColor = isDarkMode ? 'text-gray-400' : 'text-gray-500';
-
   return (
     <div className="relative mb-6" ref={wrapperRef}>
       {label && (
-        <label className={`block mb-1 ${labelColor} text-[11px] tracking-widest`}>
+        <label className="block mb-1 text-black dark:text-gray-300 text-[11px] tracking-widest">
           {label}
           {required && <span className="text-red-600">*</span>}
         </label>
@@ -129,43 +118,43 @@ const Dropdown: React.FC<DropdownProps> = ({
           />
         )}
         
-        <svg 
-          className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${iconColor}`}
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 20 20" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
+        <svg
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-gray-500 dark:text-gray-400"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
           strokeLinejoin="round"
         >
           <path d="m6 9 6 6 6-6" />
         </svg>
 
-        <input 
+        <input
           value={displayValue}
           onClick={toggleOptions}
           onKeyDown={handleKeyDown}
-          type="text" 
+          type="text"
           readOnly
           placeholder={!displayValue ? placeholder : ''}
           disabled={disabled}
-          className={`block w-full ${bgColor} ${textColor} border ${borderColor} ${focusBorderColor} text-[11px] tracking-widest rounded-lg px-3 py-2.5 leading-tight outline-none transition-all duration-200 cursor-pointer ${
+          className={`block w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500 text-[11px] tracking-widest rounded-lg px-3 py-2.5 leading-tight outline-none transition-all duration-200 cursor-pointer ${
             icon ? 'pl-10' : ''
           } pr-10 ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${error ? 'border-red-600' : ''}`}
         />
       </div>
       
       {showOptions && options.length > 0 && (
-        <ul className={`mt-1 rounded-lg ${dropdownBg} border ${borderColor} shadow-md absolute left-0 w-full z-50 max-h-60 overflow-y-auto`}>
+        <ul className="mt-1 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 shadow-md absolute left-0 w-full z-50 max-h-60 overflow-y-auto">
           {options.map((option, index) => (
-            <li 
+            <li
               key={index}
               onClick={() => selectOption(option)}
               onMouseEnter={() => setActiveIndex(index)}
-              className={`text-[11px] tracking-widest px-3 py-2 ${dropdownHover} cursor-pointer ${
-                index === activeIndex ? activeDropdown : ''
-              } ${textColor}`}
+              className={`text-[11px] tracking-widest px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer text-gray-900 dark:text-white ${
+                index === activeIndex ? 'bg-gray-100 dark:bg-gray-600' : ''
+              }`}
             >
               {typeof option === 'object' ? option.name : option}
             </li>

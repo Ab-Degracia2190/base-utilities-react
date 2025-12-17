@@ -9,6 +9,9 @@ const Buttons = lazy(() => import('@/components/pages/contents/buttons'));
 const Loaders = lazy(() => import('@/components/pages/contents/loaders'));
 const Formatters = lazy(() => import('@/components/pages/contents/formatters'));
 const Inputs = lazy(() => import('@/components/pages/contents/inputs'));
+const Modals = lazy(() => import('@/components/pages/contents/modals'));
+const Paginations = lazy(() => import('@/components/pages/contents/paginations'));
+const Tables = lazy(() => import('@/components/pages/contents/tables'));
 const NotFound = lazy(() => import('@/components/pages/errors/404'));
 
 const router = createBrowserRouter([
@@ -53,6 +56,30 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PrimaryLoader overlay />}>
             <Inputs />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'modals',
+        element: (
+          <Suspense fallback={<PrimaryLoader overlay />}>
+            <Modals />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'paginations',
+        element: (
+          <Suspense fallback={<PrimaryLoader overlay />}>
+            <Paginations />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'tables',
+        element: (
+          <Suspense fallback={<PrimaryLoader overlay />}>
+            <Tables />
           </Suspense>
         ),
       },

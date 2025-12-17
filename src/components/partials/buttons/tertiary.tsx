@@ -17,7 +17,7 @@ const TertiaryButton: React.FC<TertiaryButtonProps> = ({
   onClick,
   className = '',
 }) => {
-  const baseStyles = 'cursor-pointer w-full font-semibold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs md:text-sm';
+  const baseStyles = 'cursor-pointer w-full font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-xs md:text-sm';
   const defaultStyles = 'bg-transparent text-rose-500 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-gray-800';
   
   return (
@@ -25,7 +25,7 @@ const TertiaryButton: React.FC<TertiaryButtonProps> = ({
       type={type}
       disabled={disabled || loading}
       onClick={onClick}
-      className={className ? `${baseStyles} ${className}` : `${baseStyles} ${defaultStyles}`}
+      className={`${baseStyles} ${defaultStyles} ${className}`}
     >
       {children}
       {loading && (

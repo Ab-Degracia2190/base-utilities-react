@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AnimatedBackground from '@/components/partials/background/animation';
+import AnimatedBackground from '../background/animation';
 
 interface SecondaryLoaderProps {
   overlay?: boolean;

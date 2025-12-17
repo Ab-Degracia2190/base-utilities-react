@@ -8,3 +8,4 @@ export { default as Dropdown } from './dropdown';
 export { default as Checkbox } from './checkbox';
 export { default as DatePicker } from './date-picker';
 export { default as DateRangePicker } from './date-range-picker';
+export { default as Search } from './search';

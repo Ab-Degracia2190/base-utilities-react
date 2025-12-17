@@ -1,39 +1,44 @@
 {
-  "name": "@aldrin-degracia/base-utilities-react",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "axios": "^1.13.2",
-    "jwt-decode": "^4.0.0",
-    "lucide-react": "^0.553.0",
-    "mongoose": "^8.19.4",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.5",
-    "tailwindcss": "^4.1.17"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/axios": "^0.14.4",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^24.10.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react-swc": "^4.2.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.3",
-    "vite": "^7.2.2"
-  }
+   "name": "@organizasyon/base-utilities-react",
+   "private": false,
+   "version": "0.0.1",
+   "type": "module",
+   "main": "dist/base-utilities-react.umd.js",
+   "module": "dist/base-utilities-react.es.js",
+   "types": "dist/exports/index.d.ts",
+   "style": "dist/base-utilities-react.css",
+   "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+   },
+   "dependencies": {
+      "@tailwindcss/vite": "^4.1.17",
+      "axios": "^1.13.2",
+      "jwt-decode": "^4.0.0",
+      "lucide-react": "^0.553.0",
+      "mongoose": "^8.19.4",
+      "react": "^19.2.0",
+      "react-dom": "^19.2.0",
+      "react-router-dom": "^7.9.5",
+      "tailwindcss": "^4.1.17"
+   },
+   "devDependencies": {
+      "@eslint/js": "^9.39.1",
+      "@types/axios": "^0.14.4",
+      "@types/mongoose": "^5.11.97",
+      "@types/node": "^24.10.0",
+      "@types/react": "^19.2.2",
+      "@types/react-dom": "^19.2.2",
+      "@vitejs/plugin-react-swc": "^4.2.1",
+      "eslint": "^9.39.1",
+      "eslint-plugin-react-hooks": "^5.2.0",
+      "eslint-plugin-react-refresh": "^0.4.24",
+      "globals": "^16.5.0",
+      "typescript": "~5.9.3",
+      "typescript-eslint": "^8.46.3",
+      "vite": "^7.2.2",
+      "vite-plugin-dts": "^4.5.4"
+   }
 }

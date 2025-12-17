@@ -9,7 +9,6 @@ interface PasswordProps {
   disabled?: boolean;
   required?: boolean;
   error?: string;
-  isDarkMode?: boolean;
 }
 
 const Password: React.FC<PasswordProps> = ({
@@ -20,22 +19,15 @@ const Password: React.FC<PasswordProps> = ({
   placeholder = '',
   disabled = false,
   required = false,
-  error,
-  isDarkMode = false
+  error
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const bgColor = isDarkMode ? 'bg-gray-700' : 'bg-white';
-  const textColor = isDarkMode ? 'text-white' : 'text-gray-900';
-  const labelColor = isDarkMode ? 'text-gray-300' : 'text-black';
-  const borderColor = isDarkMode ? 'border-gray-600' : 'border-gray-300';
-  const focusBorderColor = isDarkMode ? 'focus:border-blue-500' : 'focus:border-blue-600';
-
   return (
     <div className="relative mb-6">
       {label && (
-        <label className={`block mb-1 ${labelColor} text-[11px] tracking-widest`}>
+        <label className="block mb-1 text-black dark:text-gray-300 text-[11px] tracking-widest">
           {label}
           {required && <span className="text-red-600">*</span>}
         </label>
@@ -55,14 +47,14 @@ const Password: React.FC<PasswordProps> = ({
           type={showPassword ? 'text' : 'password'}
           placeholder={isFocused || !value ? placeholder : ''}
           disabled={disabled}
-          className={`block w-full ${bgColor} ${textColor} border ${borderColor} ${focusBorderColor} text-[11px] tracking-widest rounded-lg px-3 py-2.5 pr-10 leading-tight outline-none transition-all duration-200 ${
+          className={`block w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 focus:border-blue-600 dark:focus:border-blue-500 text-[11px] tracking-widest rounded-lg px-3 py-2.5 pr-10 leading-tight outline-none transition-all duration-200 ${
             icon ? 'pl-10' : ''
           } ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${error ? 'border-red-600' : ''}`}
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
         >
           {showPassword ? (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

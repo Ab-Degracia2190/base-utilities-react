@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, Email, Password, Number, TextArea, AutoSuggest, Checkbox, Dropdown, DatePicker, DateRangePicker } from '@/components/partials/inputs';
+import { Text, Email, Password, Number, TextArea, AutoSuggest, Checkbox, Dropdown, DatePicker, DateRangePicker, Search } from '@/components/partials/inputs';
 
 const Inputs = () => {
   // Get theme from localStorage
@@ -41,6 +41,7 @@ const Inputs = () => {
   const [dropdownValue, setDropdownValue] = useState('');
   const [dateValue, setDateValue] = useState('');
   const [dateRangeValue, setDateRangeValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   const suggestions = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape'];
   const dropdownOptions = [
@@ -72,9 +73,47 @@ const Inputs = () => {
             ├── text.tsx<br/>
             ├── number.tsx<br/>
             ├── text-area.tsx<br/>
+            ├── search.tsx<br/>
             └── index.tsx (exports all components)
           </p>
         </div>
+
+        {/* Search Input */}
+        <section className={`mb-8 p-6 rounded-lg shadow ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+          <h2 className={`text-sm md:text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            Search Input <span className={`text-[10px] md:text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>(search.tsx)</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Search
+              label="Search"
+              value={searchValue}
+              onChange={setSearchValue}
+              placeholder="Search for anything..."
+              required
+            />
+            <Search
+              label="With Search Handler"
+              value={searchValue}
+              onChange={setSearchValue}
+              onSearch={(value) => console.log('Searching for:', value)}
+              placeholder="Type and press Enter..."
+            />
+            <Search
+              label="Error State"
+              value="invalid search"
+              onChange={() => {}}
+              placeholder="Error example"
+              error="Search query too short"
+            />
+            <Search
+              label="Disabled"
+              value="Disabled search"
+              onChange={() => {}}
+              placeholder="Disabled search"
+              disabled
+            />
+          </div>
+        </section>
 
         {/* Text Input */}
         <section className={`mb-8 p-6 rounded-lg shadow ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
@@ -88,7 +127,6 @@ const Inputs = () => {
               onChange={setTextValue}
               placeholder="Enter your name"
               required
-              isDarkMode={isDarkMode}
             />
             <Text
               label="Disabled"
@@ -96,7 +134,6 @@ const Inputs = () => {
               onChange={() => {}}
               placeholder="Disabled"
               disabled
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -113,7 +150,13 @@ const Inputs = () => {
               onChange={setEmailValue}
               placeholder="Enter your email"
               required
-              isDarkMode={isDarkMode}
+            />
+            <Email
+              label="Error State"
+              value="invalid-email"
+              onChange={() => {}}
+              placeholder="Error example"
+              error="Please enter a valid email address"
             />
             <Email
               label="With Error"
@@ -121,7 +164,6 @@ const Inputs = () => {
               onChange={() => {}}
               placeholder="Email with error"
               error="Invalid email format"
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -136,9 +178,15 @@ const Inputs = () => {
               label="Password"
               value={passwordValue}
               onChange={setPasswordValue}
-              placeholder="Enter password"
+              placeholder="Enter your password"
               required
-              isDarkMode={isDarkMode}
+            />
+            <Password
+              label="Error State"
+              value="short"
+              onChange={() => {}}
+              placeholder="Error example"
+              error="Password must be at least 8 characters"
             />
             <Password
               label="Confirm Password"
@@ -146,7 +194,6 @@ const Inputs = () => {
               onChange={() => {}}
               placeholder="Confirm password"
               error="Passwords do not match"
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -163,7 +210,13 @@ const Inputs = () => {
               onChange={setNumberValue}
               placeholder="Enter your age"
               required
-              isDarkMode={isDarkMode}
+            />
+            <Number
+              label="Working Hours"
+              value="8"
+              onChange={() => {}}
+              placeholder="Hours"
+              fieldType="working_hours"
             />
             <Number
               label="Working Hours"
@@ -171,7 +224,6 @@ const Inputs = () => {
               onChange={() => {}}
               placeholder="1-9 only"
               fieldType="working_hours"
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -185,9 +237,8 @@ const Inputs = () => {
             label="Description"
             value={textAreaValue}
             onChange={setTextAreaValue}
-            placeholder="Enter description"
+            placeholder="Enter a description"
             required
-            isDarkMode={isDarkMode}
           />
         </section>
 
@@ -203,7 +254,6 @@ const Inputs = () => {
             placeholder="Type to search..."
             suggestions={suggestions}
             required
-            isDarkMode={isDarkMode}
           />
         </section>
 
@@ -220,7 +270,14 @@ const Inputs = () => {
               placeholder="Choose an option"
               options={dropdownOptions}
               required
-              isDarkMode={isDarkMode}
+            />
+            <Dropdown
+              label="Disabled"
+              value="1"
+              onChange={() => {}}
+              placeholder="Disabled dropdown"
+              options={dropdownOptions}
+              disabled
             />
             <Dropdown
               label="Disabled"
@@ -229,7 +286,6 @@ const Inputs = () => {
               placeholder="Disabled dropdown"
               options={dropdownOptions}
               disabled
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -245,7 +301,6 @@ const Inputs = () => {
             onChange={setDateValue}
             placeholder="Pick a date"
             required
-            isDarkMode={isDarkMode}
           />
         </section>
 
@@ -260,7 +315,6 @@ const Inputs = () => {
             onChange={setDateRangeValue}
             placeholder="Pick date range"
             required
-            isDarkMode={isDarkMode}
           />
         </section>
 
@@ -276,14 +330,12 @@ const Inputs = () => {
               checked={checkboxValue}
               onChange={setCheckboxValue}
               required
-              isDarkMode={isDarkMode}
             />
             <Checkbox
               name="newsletter"
               label="Subscribe to newsletter"
               checked={false}
               onChange={() => {}}
-              isDarkMode={isDarkMode}
             />
             <Checkbox
               name="disabled"
@@ -291,7 +343,6 @@ const Inputs = () => {
               checked={true}
               onChange={() => {}}
               disabled
-              isDarkMode={isDarkMode}
             />
           </div>
         </section>
@@ -310,7 +361,8 @@ const Inputs = () => {
   dropdown: dropdownValue,
   date: dateValue,
   dateRange: dateRangeValue,
-  checkbox: checkboxValue
+  checkbox: checkboxValue,
+  search: searchValue
 }, null, 2)}
           </pre>
         </section>

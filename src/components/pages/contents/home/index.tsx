@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PrimaryButton from "@/components/partials/buttons/default/primary";
-import { MousePointer, Loader, Square, Type } from "lucide-react";
+import { MousePointer, Loader, Square, Type, Layers, ChevronLeft, ChevronRight, Grid3x3 } from "lucide-react";
 
 const HomeSelection = () => {
   return (
@@ -12,7 +12,7 @@ const HomeSelection = () => {
         Browse and preview different UI components
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 w-full max-w-6xl">
         <Link to="/buttons" className="w-full">
           <PrimaryButton className="text-xs md:text-sm w-full">
             <MousePointer className="w-5 h-5" />
@@ -38,6 +38,30 @@ const HomeSelection = () => {
           <PrimaryButton className="text-xs md:text-sm w-full">
             <Type className="w-5 h-5" />
             Inputs
+          </PrimaryButton>
+        </Link>
+        
+        <Link to="/modals" className="w-full">
+          <PrimaryButton className="text-xs md:text-sm w-full">
+            <Layers className="w-5 h-5" />
+            Modals
+          </PrimaryButton>
+        </Link>
+        
+        <Link to="/paginations" className="w-full">
+          <PrimaryButton className="text-xs md:text-sm w-full flex items-center justify-center gap-2">
+            <div className="flex items-center gap-0">
+              <ChevronLeft className="w-4 h-4 flex-shrink-0" />
+              <ChevronRight className="w-4 h-4 flex-shrink-0" />
+            </div>
+            <span>Paginations</span>
+          </PrimaryButton>
+        </Link>
+        
+        <Link to="/tables" className="w-full">
+          <PrimaryButton className="text-xs md:text-sm w-full">
+            <Grid3x3 className="w-5 h-5" />
+            Tables
           </PrimaryButton>
         </Link>
       </div>

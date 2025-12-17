@@ -6,7 +6,6 @@ interface CheckboxProps {
   required?: boolean;
   disabled?: boolean;
   error?: string;
-  isDarkMode?: boolean;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -16,10 +15,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   required = false,
   disabled = false,
-  error,
-  isDarkMode = false
+  error
 }) => {
-  const textColor = isDarkMode ? 'text-gray-300' : 'text-gray-900';
 
   return (
     <div>
@@ -39,7 +36,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             }
           }}
         />
-        <span className={`text-[11px] tracking-widest w-full ml-2 ${textColor}`}>
+        <span className="text-[11px] tracking-widest w-full ml-2 text-gray-900 dark:text-gray-300">
           {label}
           {required && <span className="text-red-600">*</span>}
         </span>
